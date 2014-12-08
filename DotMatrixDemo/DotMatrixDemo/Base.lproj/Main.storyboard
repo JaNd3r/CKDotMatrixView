@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5J-WG-yrK" userLabel="Dot Matrix View 1" customClass="CKDotMatrixView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="rvt-Yq-cGR"/>
+                                    <constraint firstAttribute="height" constant="50" id="vh7-Nk-xnh"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="horizontalDotCount">
+                                        <integer key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="DOT MATRIX"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="rvt-Yq-cGR"/>
+                                        <exclude reference="vh7-Nk-xnh"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="rvt-Yq-cGR"/>
+                                        <include reference="vh7-Nk-xnh"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8g-bK-8Pm" userLabel="Dot Matrix View 2" customClass="CKDotMatrixView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.0" green="0.11375619565413421" blue="0.22883597883597884" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Gxv-qy-DbG"/>
+                                    <constraint firstAttribute="height" constant="50" id="Zkq-f0-RFs"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="horizontalDotCount">
+                                        <integer key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value=" DEMO APP"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="animated" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Gxv-qy-DbG"/>
+                                        <exclude reference="Zkq-f0-RFs"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Gxv-qy-DbG"/>
+                                        <include reference="Zkq-f0-RFs"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P8g-bK-8Pm" firstAttribute="top" secondItem="U5J-WG-yrK" secondAttribute="bottom" constant="8" id="BPg-Uc-RxG"/>
+                            <constraint firstAttribute="centerX" secondItem="P8g-bK-8Pm" secondAttribute="centerX" id="Kj3-fb-ljX"/>
+                            <constraint firstItem="U5J-WG-yrK" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="cI4-TC-tSO"/>
+                            <constraint firstAttribute="centerX" secondItem="U5J-WG-yrK" secondAttribute="centerX" id="pL6-fD-z9N"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="U5J-WG-yrK"/>
+                                <exclude reference="P8g-bK-8Pm"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="BPg-Uc-RxG"/>
+                                <exclude reference="Kj3-fb-ljX"/>
+                                <exclude reference="cI4-TC-tSO"/>
+                                <exclude reference="pL6-fD-z9N"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="U5J-WG-yrK"/>
+                                <include reference="P8g-bK-8Pm"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="BPg-Uc-RxG"/>
+                                <include reference="Kj3-fb-ljX"/>
+                                <include reference="cI4-TC-tSO"/>
+                                <include reference="pL6-fD-z9N"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
