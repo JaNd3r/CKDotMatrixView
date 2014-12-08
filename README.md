@@ -7,6 +7,8 @@ Looking for a highly customizable animated banner-like dot matrix view? Got it!
 
 It's almost as easy to handle as a `UILabel`.
 
+To see the demo app in action, clone this repo, navigate to the `DotMatrixDemo` folder and run `pod install`. Open the created workspace in Xcode and you are ready to go.
+
 ## Features
 
 * Can be adjusted to fit almost any size using storyboard settings only.
