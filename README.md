@@ -1,6 +1,9 @@
 CKDotMatrixView
 ===============
 
+[![Version](https://cocoapod-badges.herokuapp.com/v/CKDotMatrixView/badge.png)](http://cocoadocs.org/docsets/CKDotMatrixView)
+[![Platform](https://cocoapod-badges.herokuapp.com/p/CKDotMatrixView/badge.png)](http://cocoadocs.org/docsets/CKDotMatrixView)
+
 Looking for a highly customizable animated banner-like dot matrix view? Got it!
 
 ![](DotMatrixDemo1.gif)
