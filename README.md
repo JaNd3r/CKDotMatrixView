@@ -12,6 +12,10 @@ It's almost as easy to handle as a `UILabel`.
 
 To see the demo app in action, clone this repo, navigate to the `DotMatrixDemo` folder and run `pod install`. Open the created workspace in Xcode and you are ready to go.
 
+Here's a screenshot of a real app that uses two `CKDotMatrixView` instances to simulate a retro till display.
+
+![](dotmatrix_example.png)
+
 ## Features
 
 * Can be adjusted to fit almost any size using storyboard settings only.
@@ -22,7 +26,7 @@ To see the demo app in action, clone this repo, navigate to the `DotMatrixDemo` 
 
 ## Usage
 
-As you can see in the provided demo app, the CKDotMatrixView can be added to your app's UI without a single line of code (there's no view controller implementation in that demo app).
+As you can see in the provided demo app, the `CKDotMatrixView` can be added to your app's UI without a single line of code (there's no view controller implementation in that demo app).
 
 Add a `UIView` to your storyboard and set its origin and size appropriately.
 
