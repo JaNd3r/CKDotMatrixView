@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "CKDotMatrixFontMapping.h"
 
+IB_DESIGNABLE
+
 @interface CKDotMatrixView : UIView
 
-@property (nonatomic) NSUInteger horizontalDotCount;
-@property (nonatomic) NSUInteger verticalDotCount;
+@property (nonatomic) IBInspectable NSUInteger horizontalDotCount;
+@property (nonatomic) IBInspectable NSUInteger verticalDotCount;
 @property (nonatomic) CKDotMatrixFontMapping* fontMapping;
-@property (nonatomic) NSString* text;
-@property (nonatomic) BOOL animated;
+@property (nonatomic) IBInspectable NSString* text;
+@property (nonatomic) IBInspectable BOOL animated;
 
 @end

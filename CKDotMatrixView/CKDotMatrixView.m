@@ -25,31 +25,54 @@
 
 @implementation CKDotMatrixView
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self internalInitialize];
+    }
+    return self;
+}
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.fontMapping = [CKDotMatrixFontMapping new];
-        self.textMatrix = [NSMutableDictionary new];
-        self.opaque = YES;
-        self.horizontalDotCountSpecified = NO;
-        self.verticalDotCountSpecified = NO;
-        self.matrixInitialized = NO;
-        CGFloat tRed = 0.0;
-        CGFloat tGreen = 0.0;
-        CGFloat tBlue = 0.0;
-        CGFloat tAlpha = 0.0;
-        [self.backgroundColor getRed:&tRed green:&tGreen blue:&tBlue alpha:&tAlpha];
-        self.dotOffColor = [[UIColor alloc] initWithRed:tRed+0.12 green:tGreen+0.12 blue:tBlue+0.12 alpha:tAlpha];
-        
-        [self.tintColor getRed:&tRed green:&tGreen blue:&tBlue alpha:&tAlpha];
-        self.dotGlowColor = [[UIColor alloc] initWithRed:MAX(tRed+0.05, 1.0) green:MAX(tGreen+0.05, 1.0) blue:MAX(tBlue+0.05, 1.0) alpha:0.90];
-        
-        self.animationStep = 2;
-        self.animationDelay = 0.05;
-        self.animationOffset = 0;
+        [self internalInitialize];
     }
     return self;
+}
+
+- (void)prepareForInterfaceBuilder
+{
+    [super prepareForInterfaceBuilder];
+    [self internalInitialize];
+    if (self.text) {
+        [self internalShowText];
+    }
+}
+
+- (void)internalInitialize
+{
+    self.fontMapping = [CKDotMatrixFontMapping new];
+    self.textMatrix = [NSMutableDictionary new];
+    self.opaque = YES;
+    self.horizontalDotCountSpecified = NO;
+    self.verticalDotCountSpecified = NO;
+    self.matrixInitialized = NO;
+    CGFloat tRed = 0.0;
+    CGFloat tGreen = 0.0;
+    CGFloat tBlue = 0.0;
+    CGFloat tAlpha = 0.0;
+    [self.backgroundColor getRed:&tRed green:&tGreen blue:&tBlue alpha:&tAlpha];
+    self.dotOffColor = [[UIColor alloc] initWithRed:tRed+0.12 green:tGreen+0.12 blue:tBlue+0.12 alpha:tAlpha];
+    
+    [self.tintColor getRed:&tRed green:&tGreen blue:&tBlue alpha:&tAlpha];
+    self.dotGlowColor = [[UIColor alloc] initWithRed:MAX(tRed+0.05, 1.0) green:MAX(tGreen+0.05, 1.0) blue:MAX(tBlue+0.05, 1.0) alpha:0.90];
+    
+    self.animationStep = 2;
+    self.animationDelay = 0.05;
+    self.animationOffset = 0;
 }
 
 - (void)setHorizontalDotCount:(NSUInteger)horizontalDotCount
@@ -64,16 +87,17 @@
     self.verticalDotCountSpecified = YES;
 }
 
-- (void)updateConstraints
+- (void)layoutSubviews
 {
-    [super updateConstraints];
+    [super layoutSubviews];
+
     if (self.horizontalDotCountSpecified && self.verticalDotCountSpecified) {
         [self initializeMatrix];
     }
 }
 
 - (void)initializeMatrix
-{    
+{
     for (int y=0; y<self.verticalDotCount; y++) {
         for (int x=0; x<self.horizontalDotCount; x++) {
             NSString* tKey = [NSString stringWithFormat:@"%i", (y+1) * 1000 + (x+1)];
@@ -91,8 +115,9 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
+
     CGContextRef tContext = UIGraphicsGetCurrentContext();
-    CGSize tSize = [self systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
+    CGSize tSize = self.bounds.size;
     CGFloat tDotWidth = tSize.width / self.horizontalDotCount;
     CGFloat tDotHeight = tSize.height / self.verticalDotCount;
     CGContextSetShadow(tContext, CGSizeMake(0.0, 0.0), 0.0);
@@ -110,7 +135,7 @@
 {
     BOOL tInitialDot = YES;
     CGContextRef tContext = UIGraphicsGetCurrentContext();
-    CGSize tSize = [self systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
+    CGSize tSize = self.bounds.size;
     CGFloat tDotWidth = tSize.width / self.horizontalDotCount;
     CGFloat tDotHeight = tSize.height / self.verticalDotCount;
     for (int y=0; y<self.verticalDotCount; y++) {
@@ -129,6 +154,10 @@
         }
     }
     
+#if TARGET_INTERFACE_BUILDER
+    self.animationOffset = 0;
+#endif
+
     if (self.animationOffset > 0) {
         if (self.animationStep > self.animationOffset) {
             self.animationOffset = 0;
@@ -149,10 +178,12 @@
 
 - (void)internalShowText
 {
+#if !TARGET_INTERFACE_BUILDER
     if (self.animated) {
         self.animationOffset = self.horizontalDotCount;
     }
-
+#endif
+    
     int tCurrentPosition = 0;
     int tCurrentWidth = 0;
     for (int i=0; i<self.text.length; i++) {
@@ -170,7 +201,11 @@
         }
         tCurrentPosition += tCurrentWidth;
     }
+    
+#if !TARGET_INTERFACE_BUILDER
     [self setNeedsDisplay];
+#endif
+    
 }
 
 @end
